@@ -17,10 +17,10 @@
 	
 	"background": 
 	{
-		"scripts" : ["background.js"]
+		"scripts" : ["background.js", "action/actions.js", "scripts/jquery-1.4.2.js", "options/options.js"]
 	},
 	
-	"web_accessible_resources" : ["css/atd.css"],
+	"web_accessible_resources" : ["css/atd.css", "options/style.css"],
 
   "permissions": [
      "tabs",

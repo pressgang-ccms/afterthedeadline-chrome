@@ -1,3 +1,16 @@
+// Add event listeners once the DOM has fully loaded by listening for the
+// `DOMContentLoaded` event on the document, and adding your listeners to
+// specific elements when it triggers.
+document.addEventListener('DOMContentLoaded', function () {
+	if (document.getElementById('disable') != null)
+		document.getElementById('disable').addEventListener('click', function() {__disable();});
+	if (document.getElementById('enable') != null)
+		document.getElementById('enable').addEventListener('click', function() {__enable();});
+	document.getElementById('docs').addEventListener('click', function() {home();});
+	document.getElementById('options').addEventListener('click', function() {options();});
+ 
+});
+
 function goTo(url) {
 	chrome.tabs.getAllInWindow(undefined, function(tabs) {
 		for (var i = 0, tab; tab = tabs[i]; i++) {
