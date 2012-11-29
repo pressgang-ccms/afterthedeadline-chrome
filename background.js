@@ -9,36 +9,36 @@ function toHost(url) {
 
 /* Server URLS for the various languages */
 //baseServerUrlPostfix = '.service.afterthedeadline.com';
-baseServerUrlPostfix = '.afterthedeadline-pressgangccms.rhcloud.com';
-baseServerUrlPrefix = 'https://';
+var baseServerUrlPostfix = '.afterthedeadline-pressgangccms.rhcloud.com';
+var baseServerUrlPrefix = 'https://';
 
-frenchServerUrl = baseServerUrlPrefix + 'fr' + baseServerUrlPostfix;
-germanServerUrl = baseServerUrlPrefix + 'de' + baseServerUrlPostfix;
-portugueseServerUrl = baseServerUrlPrefix + 'pt' + baseServerUrlPostfix;
-spanishServerUrl = baseServerUrlPrefix + 'es' + baseServerUrlPostfix;
-englishServerUrl = baseServerUrlPrefix + 'en' + baseServerUrlPostfix;
+var frenchServerUrl = baseServerUrlPrefix + 'fr' + baseServerUrlPostfix;
+var germanServerUrl = baseServerUrlPrefix + 'de' + baseServerUrlPostfix;
+var portugueseServerUrl = baseServerUrlPrefix + 'pt' + baseServerUrlPostfix;
+var spanishServerUrl = baseServerUrlPrefix + 'es' + baseServerUrlPostfix;
+var englishServerUrl = baseServerUrlPrefix + 'en' + baseServerUrlPostfix;
 
 
 /* define default values for Language and the keyboard shortcut */
-if (localStorage['language'] == undefined)
-	localStorage['language'] = 'English';
-if (localStorage['shortcut'] == undefined)
+if (typeof localStorage['language'] === undefined)
+	localStorage['language'] = 'english';
+if (typeof localStorage['shortcut'] === undefined)
 	localStorage['shortcut'] = 'true,false,true,false,83,0';
-if (localStorage['auto'] == undefined)
+if (typeof localStorage['auto'] === undefined)
 	localStorage['auto'] = 'false';
-if (localStorage['button'] == undefined)
+if (typeof localStorage['button'] === undefined)
 	localStorage['button'] = 'true';
-if (localStorage['message'] == undefined)
+if (typeof localStorage['message'] === undefined)
 	localStorage['message'] = 'true';
 
 /* always disable auto-proofread feature in older versions of Chrome */
-if (chrome.pageAction['setPopup'] == undefined)
+if (typeof chrome.pageAction['setPopup'] === undefined)
 	localStorage['auto'] = false;
 
 /* we're going to get some nasty errors if our options are not set */
 var options = ['options', 'sites', 'phrases', 'guess'];
 for (var x = 0; x < options.length; x++) {
-	if (localStorage[options[x]] == undefined)
+	if (typeof localStorage[options[x]] === undefined)
 		localStorage[options[x]] = '';
 }
 
@@ -59,14 +59,14 @@ function checkTab(tabId, url, change) {
 		chrome.pageAction.setIcon({ path: 'images/icon48.png', tabId: tabId });
 
 		/* check if we're using an older ver of Chrome, if so don't even mess with page actions */
-		if (chrome.pageAction['setPopup'] != undefined)
+		if (typeof chrome.pageAction['setPopup'] != undefined)
 			chrome.pageAction.setPopup({ popup: 'action/disable.html', tabId: tabId });
 	}
 	else {
 		chrome.pageAction.setIcon({ path: 'images/icon48bw.png', tabId: tabId });
 
 		/* check if we're using an older ver of Chrome, if so don't even mess with page actions */
-		if (chrome.pageAction['setPopup'] != undefined)
+		if (typeof chrome.pageAction['setPopup'] != undefined)
 			chrome.pageAction.setPopup({ popup: 'action/enable.html', tabId: tabId });
 	}
 
@@ -146,21 +146,18 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 		return null;
 
 	/* handle language option */
-	/*var language = localStorage['language'];
+	var language = localStorage['language'];
 
 	if (language == 'French')
-		request.url = frenchServerUrl + request.url;
+		request.url = (stringLocalStorageIsEmpty('frenchUrl')  ? frenchServerUrl : localStorage['frenchUrl']) + request.url;
 	else if (language == 'German')
-		request.url = germanServerUrl + request.url;
+		request.url = (stringLocalStorageIsEmpty('germanUrl') ? germanServerUrl : localStorage['germanUrl']) + request.url;
 	else if (language == 'Portuguese')
-		request.url = spanishServerUrl + request.url;
+		request.url = (stringLocalStorageIsEmpty('portugueseUrl') ? portugueseServerUrl : localStorage['portugueseUrl']) + request.url;
 	else if (language == 'Spanish')
-		request.url = spanishServerUrl + request.url;
+	    request.url = (stringLocalStorageIsEmpty('spanishUrl') ? spanishServerUrl : localStorage['spanishUrl']) + request.url;
 	else
-		request.url = englishServerUrl + request.url;*/
-		
-	/* Only english works at this point */
-	request.url = 'https://afterthedeadline-pressgangccms.rhcloud.com' + request.url;
+		request.url = (stringLocalStorageIsEmpty('englishUrl') ? englishServerUrl : localStorage['englishUrl']) + request.url;
 
 	xhr.open('POST', request.url, true );
                 
@@ -170,7 +167,7 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 		}
 	};
 
-	if (localStorage['user-key'] == undefined)
+	if (typeof localStorage['user-key'] === undefined)
 		localStorage['user-key'] = 'atd-chrome-' + (new Date()).getTime();
 
 	if (request.data.length)
@@ -188,6 +185,13 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.send("data=" + request.data);
 });
+
+function stringLocalStorageIsEmpty(key)
+{
+    return typeof localStorage[key] === "undefined" ||
+        localStorage[key] === null ||
+        localStorage[key].trim().length = 0;
+}
 
 /* if we have any tabs, lets set their icon to the right thing, right now */
 refreshTabs();

@@ -85,14 +85,40 @@ jQuery(function() {
 
 			/* setup a listener to capture changes to the language settings */
 			$('#language li select, #language li input').change(function(event) {
-				localStorage['language'] = $('#language li select').val();
+				//localStorage['language'] = $('#language li select').val();
+                localStorage['language'] = $('input:radio[name=language]:checked').val();
 				localStorage['guess'] = $('#language li input').attr('checked');
+                
+                localStorage['englishUrl'] = $('#englishUrl').val();
+                localStorage['frenchUrl'] = $('#frenchUrl').val();
+                localStorage['germanUrl'] = $('#germanUrl').val();
+                localStorage['portugueseUrl'] = $('#portugueseUrl').val();
+                localStorage['spanishUrl'] = $('#spanishUrl').val();
 			});
 
 			/* set the language settings */
-			$('#language li select').val(localStorage['language']);
+			//$('#language li select').val(localStorage['language']);
 			$('#language li input').attr('checked', localStorage['guess'] == 'true' ? true : false);
-
+            
+           
+            if (localStorage['language'] == 'french')
+                $("#french").attr('checked', 'checked');
+            else if (localStorage['language'] == 'german')
+                $("#german").attr('checked', 'checked');
+            else if (localStorage['language'] == 'portuguese')
+                $("#portuguese").attr('checked', 'checked');
+            else if (localStorage['language'] == 'spanish')
+                $("#spanish").attr('checked', 'checked');
+            else
+                $("#english").attr('checked', 'checked');
+                
+            /* Set the language custom urls */
+            $('#englishUrl').val(localStorage['englishUrl']);
+            $('#frenchUrl').val(localStorage['frenchUrl']);
+            $('#germanUrl').val(localStorage['germanUrl']);
+            $('#portugueseUrl').val(localStorage['portugueseUrl']);
+            $('#spanishUrl').val(localStorage['spanishUrl']);
+                            
 			/* utility functions to make it easier to deal with the add/remove preferences */
 			var showItems = function(parent, items) {
 				var element = parent.children().remove();

@@ -43,25 +43,104 @@ e<html>
 				<li><input type="checkbox" name="Redundant Expression"> Redundant Phrases</li>
 			</ul>
 
-			<!-- We only support english at this point -->
-			<div style="display: none;">
-				<h4>Language</h4>
-		
-				<p>After the Deadline supports English, French, German, Portuguese, and Spanish.</p>
+			<h4>Language</h4>
+	
+			<p>After the Deadline supports English, French, German, Portuguese, and Spanish.</p>
 
-				<ul class="options" id="language">
-					<li>
-						<select name="language">
-							<option>English</option>
-							<option>French</option>
-							<option>German</option>
-							<option>Portuguese</option>
-							<option>Spanish</option>
-						</select>
-					</li>
-					<li><input type="checkbox" name="blah"> Detect language when proofreading</li>
-				</ul>
-			</div>
+			<!--<ul class="options" id="language">
+				<li>
+					<select name="language">
+						<option>English</option>
+						<option>French</option>
+						<option>German</option>
+						<option>Portuguese</option>
+						<option>Spanish</option>
+					</select>
+				</li>
+				<li><input type="checkbox" name="blah"> Detect language when proofreading</li>
+			</ul>-->
+            
+            <table>
+                <tr>
+                    <td>
+                        Language
+                    </td>
+                    <td>
+                        Selected
+                    </td>
+                    <td>
+                        Custom Server (Leave blank for the default server)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        English
+                    </td>
+                    <td>
+                        <input type="radio" name="language" value="english" id="english">
+                    </td>
+                    <td>
+                        <input type="text" name="englishUrl" id="englishUrl">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        French
+                    </td>
+                    <td>
+                        <input type="radio" name="language" value="french" id="french">
+                    </td>
+                    <td>
+                        <input type="text" name="frenchUrl" id="frenchUrl">
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td>
+                        German
+                    </td>
+                    <td>
+                        <input type="radio" name="language" value="german" id="german">
+                    </td>
+                    <td>
+                        <input type="text" name="germanUrl" id="germanUrl">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Portuguese
+                    </td>
+                    <td>
+                        <input type="radio" name="language" value="portuguese" id="portuguese">
+                    </td>
+                    <td>
+                        <input type="text" name="portugueseUrl" id="portugueseUrl">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Spanish
+                    </td>
+                    <td>
+                        <input type="radio" name="language" value="spanish" id="spanish">
+                    </td>
+                    <td>
+                        <input type="text" name="spanishUrl" id="spanishUrl">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3">
+                        <input type="checkbox" name="blah"> Detect language when proofreading
+                    </td>
+                    
+                </tr>
+                
+            </table>
 
 			<h4>Ignored Phrases</h4>
 
