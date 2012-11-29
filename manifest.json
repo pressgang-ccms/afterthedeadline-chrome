@@ -1,10 +1,9 @@
 {
   "name": "After the Deadline - With Custom Servers",
   "manifest_version": 2,
-  "version": "1.5",
+  "version": "1.6",
   "description": "Check spelling, style, and grammar in your browser. You can also optionally specify a custom After The Deadline server.",
   "homepage_url": "https://github.com/pressgang-ccms/afterthedeadline-chrome",
-  "update_url": "https://raw.github.com/pressgang-ccms/afterthedeadline-chrome/master/updates.xml",
 
   "icons" : { "48" : "images/icon48.png",
               "128" : "images/icon128.png" },
@@ -26,13 +25,8 @@
 
   "permissions": [
      "tabs",
-     "https://afterthedeadline-pressgangccms.rhcloud.com/*"
-     /* "https://service.afterthedeadline.com/*",
-     "https://de.service.afterthedeadline.com/*",
-     "https://en.service.afterthedeadline.com/*",
-     "https://es.service.afterthedeadline.com/*",
-     "https://fr.service.afterthedeadline.com/*",
-     "https://pt.service.afterthedeadline.com/*" */
+     "https://*",
+     "http://*"     
    ],
 
 
