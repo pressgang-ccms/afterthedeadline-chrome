@@ -1,8 +1,8 @@
 {
-  "name": "After the Deadline (Custom Server)",
+  "name": "After the Deadline - With Custom Servers",
   "manifest_version": 2,
   "version": "1.5",
-  "description": "Check spelling, style, and grammar in your browser",
+  "description": "Check spelling, style, and grammar in your browser. You can also optionally specify a custom After The Deadline server.",
   "homepage_url": "https://github.com/pressgang-ccms/afterthedeadline-chrome",
   "update_url": "https://raw.github.com/pressgang-ccms/afterthedeadline-chrome/master/updates.xml",
 
