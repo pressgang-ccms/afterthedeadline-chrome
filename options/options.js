@@ -84,7 +84,7 @@ jQuery(function() {
 			});	
 
 			/* setup a listener to capture changes to the language settings */
-			$('#language li select, #language li input').change(function(event) {
+			$('#english, #french, #german, #portuguese, #spanish, #englishUrl, #frenchUrl, #germanUrl, #portugueseUrl, #spanishUrl, #language li input ').change(function(event) {
 				//localStorage['language'] = $('#language li select').val();
                 localStorage['language'] = $('input:radio[name=language]:checked').val();
 				localStorage['guess'] = $('#language li input').attr('checked');
