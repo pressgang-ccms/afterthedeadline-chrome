@@ -190,7 +190,7 @@ function stringLocalStorageIsEmpty(key)
 {
     return typeof localStorage[key] === "undefined" ||
         localStorage[key] === null ||
-        localStorage[key].trim().length = 0;
+        localStorage[key].trim().length === 0;
 }
 
 /* if we have any tabs, lets set their icon to the right thing, right now */
