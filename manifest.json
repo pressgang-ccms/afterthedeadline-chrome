@@ -1,7 +1,7 @@
 {
   "name": "After the Deadline (Custom Server)",
   "manifest_version": 2,
-  "version": "1.3",
+  "version": "1.4",
   "description": "Check spelling, style, and grammar in your browser",
   "homepage_url": "https://github.com/pressgang-ccms/afterthedeadline-chrome",
   "update_url": "https://raw.github.com/pressgang-ccms/afterthedeadline-chrome/master/updates.xml",
