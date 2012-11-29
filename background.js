@@ -8,8 +8,7 @@ function toHost(url) {
 }
 
 /* Server URLS for the various languages */
-//baseServerUrlPostfix = '.service.afterthedeadline.com';
-var baseServerUrlPostfix = '.afterthedeadline-pressgangccms.rhcloud.com';
+var baseServerUrlPostfix = '.service.afterthedeadline.com';
 var baseServerUrlPrefix = 'https://';
 
 var frenchServerUrl = baseServerUrlPrefix + 'fr' + baseServerUrlPostfix;
