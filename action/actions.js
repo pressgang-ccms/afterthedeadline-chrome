@@ -2,13 +2,14 @@
 // `DOMContentLoaded` event on the document, and adding your listeners to
 // specific elements when it triggers.
 document.addEventListener('DOMContentLoaded', function () {
-	if (document.getElementById('disable') != null)
+	if (document.getElementById('disable') !== null)
 		document.getElementById('disable').addEventListener('click', function() {__disable();});
-	if (document.getElementById('enable') != null)
+	if (document.getElementById('enable') !== null)
 		document.getElementById('enable').addEventListener('click', function() {__enable();});
-	document.getElementById('docs').addEventListener('click', function() {home();});
-	document.getElementById('options').addEventListener('click', function() {options();});
- 
+	if (document.getElementById('docs') !== null)
+        document.getElementById('docs').addEventListener('click', function() {home();});
+    if (document.getElementById('options') !== null)    
+        document.getElementById('options').addEventListener('click', function() {options();}); 
 });
 
 function goTo(url) {
